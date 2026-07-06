@@ -299,13 +299,13 @@
       <div class="feat">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/></svg></div>
         <h3>Auth that fits real orgs</h3>
-        <p>Email + JWT out of the box, Keycloak / OIDC when you need it. Session in Redis, guarded at the edge in <span class="mono">middleware.ts</span>.</p>
+        <p>Email + JWT in an httpOnly cookie — the token never touches client-side JS. Verified at the edge in <span class="mono">proxy.ts</span>, and the Go API is never exposed publicly.</p>
       </div>
 
       <div class="feat">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="2"><path d="M4 6c0-1.5 3.5-3 8-3s8 1.5 8 3-3.5 3-8 3-8-1.5-8-3z"/><path d="M4 6v12c0 1.5 3.5 3 8 3s8-1.5 8-3V6"/></svg></div>
         <h3>Backend built for load</h3>
-        <p>Go clean architecture, pgx with a tuned connection pool, Redis cache and ISR wired for multi-replica. Not a toy — the thing you deploy.</p>
+        <p>Go clean architecture, pgx with a tuned connection pool, Redis caching that's multi-replica safe. Not a toy — the thing you deploy.</p>
       </div>
 
       <div class="feat">
@@ -334,11 +334,11 @@
         <div class="lic">Single dev · 1 project</div>
         <ul>
           <li><span class="check">✓</span>Next.js 16 + Go + Postgres + Redis</li>
-          <li><span class="check">✓</span>shadcn/ui · Tailwind v4 · dark mode</li>
+          <li><span class="check">✓</span>shadcn/ui · Tailwind v4</li>
           <li><span class="check">✓</span>Auth + CRUD with Server Actions</li>
-          <li><span class="check">✓</span>Basic RBAC + Docker Compose</li>
+          <li><span class="check">✓</span>Full team-scoped RBAC (web + api)</li>
+          <li><span class="check">✓</span>Docker Compose · auto-migrate + seed</li>
           <li class="off"><span class="check" style="color:#3a4460">✕</span>Audit SDK & viewer</li>
-          <li class="off"><span class="check" style="color:#3a4460">✕</span>Team-scoped RBAC</li>
         </ul>
         <a href="https://minhkhai1.gumroad.com/l/bastion/ITXSCJG" class="btn btn-ghost">Get Starter</a>
       </div>
@@ -350,9 +350,9 @@
         <ul>
           <li><span class="check">✓</span>Everything in Starter</li>
           <li><span class="check">✓</span><b style="color:var(--amber);font-weight:500">Audit Log SDK + viewer</b></li>
-          <li><span class="check">✓</span><b style="color:var(--cyan);font-weight:500">Team-scoped RBAC</b> (web + api)</li>
-          <li><span class="check">✓</span>Keycloak / OIDC integration</li>
-          <li><span class="check">✓</span>Multi-tenant scaffolding</li>
+          <li><span class="check">✓</span>Auto-tracks every mutation (fetch patch)</li>
+          <li><span class="check">✓</span>redact / enrich / getActor hooks</li>
+          <li><span class="check">✓</span>Direct mode for SPAs (no proxy needed)</li>
           <li><span class="check">✓</span>Unlimited commercial projects</li>
         </ul>
         <a href="https://minhkhai1.gumroad.com/l/bastion/ITXSCJG" class="btn btn-primary">Get Pro</a>
@@ -387,7 +387,7 @@
     <div class="faq">
       <div class="qa"><h3>Is this a boilerplate or a framework?</h3><p>A boilerplate. It's your code the moment you clone it — plain Next.js and Go, no hidden runtime, no lock-in. Delete what you don't need.</p></div>
       <div class="qa"><h3>Why Go instead of a Node backend?</h3><p>Because most starters give you a toy API that buckles under real traffic. Go with tuned pooling and clean architecture is what you'd actually run in production — and it's rare in this price range.</p></div>
-      <div class="qa"><h3>Do I have to use Keycloak?</h3><p>No. Email + JWT works out of the box. OIDC / Keycloak is an option you switch on when your org needs it.</p></div>
+      <div class="qa"><h3>What auth does it use?</h3><p>Email + password with an HS256 JWT in an httpOnly cookie, verified at the edge. OIDC / Keycloak integration is on the roadmap.</p></div>
       <div class="qa"><h3>Can I build client projects with it?</h3><p>Yes. Pro and Team allow unlimited commercial projects. You just can't resell Bastion itself as a template.</p></div>
       <div class="qa"><h3>What if I get stuck?</h3><p>Every tier ships with docs and a structured README. Team adds a setup call and priority email for three months.</p></div>
     </div>
